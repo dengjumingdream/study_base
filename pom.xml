@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.9.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.zhenyue.techcenter</groupId>
+    <artifactId>mockserver</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>mockserver</name>
+    <description>test gm data project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <swagger.version>2.9.2</swagger.version>
+        <swagger.models.version>1.5.21</swagger.models.version>
+        <knife4j.version>2.0.2</knife4j.version>
+        <swagger.bootstrapui.version>1.9.6</swagger.bootstrapui.version>
+    </properties>
+
+    <!-- 设置 jitpack.io 仓库 -->
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+
+        <!-- 添加 XJar 依赖 -->
+        <dependency>
+            <groupId>com.github.core-lib</groupId>
+            <artifactId>xjar</artifactId>
+            <version>4.0.2</version>
+            <!-- <scope>test</scope> -->
+        </dependency>
+
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+        </dependency>
+
+        <!--swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-models</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>${swagger.models.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>${knife4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>${swagger.bootstrapui.version}</version>
+        </dependency>
+
+        <!--代码混淆-->
+
+        <!--token加密-->
+        <dependency>
+            <groupId>com.zhenyue.teach</groupId>
+            <artifactId>gmtoken</artifactId>
+            <version>1.0.0</version>
+            <!--<systemPath>${basedir}/lib/gmtoken-1.0.0.jar</systemPath>-->
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-core -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.18</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>4.5.11</version>
+        </dependency>
+
+
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.58</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- Copying Allatori configuration file to 'target' directory.
+           The destination file will be filtered (Maven properties used in configuration file will be resolved). -->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-resources-plugin</artifactId>-->
+                <!--<version>2.6</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>copy-and-filter-allatori-config</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>copy-resources</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<outputDirectory>${basedir}/target</outputDirectory>-->
+                            <!--<resources>-->
+                                <!--<resource>-->
+                                    <!--<directory>${basedir}/allatori</directory>-->
+                                    <!--<includes>-->
+                                        <!--<include>allatori.xml</include>-->
+                                    <!--</includes>-->
+                                    <!--<filtering>true</filtering>-->
+                                <!--</resource>-->
+                            <!--</resources>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+
+            <!--&lt;!&ndash; Running Allatori &ndash;&gt;-->
+            <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
+                <!--&lt;!&ndash;<groupId>org.codehaus.mojo</groupId>&ndash;&gt;-->
+                <!--&lt;!&ndash;<artifactId>exec-maven-plugin</artifactId>&ndash;&gt;-->
+                <!--&lt;!&ndash;<version>1.2.1</version>&ndash;&gt;-->
+                <!--&lt;!&ndash;<executions>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<execution>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<id>run-allatori</id>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<phase>package</phase>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<goals>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<goal>exec</goal>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</goals>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</execution>&ndash;&gt;-->
+                <!--&lt;!&ndash;</executions>&ndash;&gt;-->
+                <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<executable>java</executable>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<arguments>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<argument>-Xms128m</argument>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<argument>-Xmx512m</argument>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<argument>-jar</argument>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;&lt;!&ndash; Copy allatori.jar to 'allatori' directory to use the commented line &ndash;&gt;&ndash;&gt;-->
+                        <!--&lt;!&ndash;<argument>${basedir}/lib/allatori.jar</argument>&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash; <argument>${basedir}/allatori/allatori.jar</argument> &ndash;&gt;&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<argument>${basedir}/target/allatori.xml</argument>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</arguments>&ndash;&gt;-->
+                <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
+            <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
+            <!--&lt;!&ndash; ProGuard混淆插件&ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>com.github.wvengen</groupId>-->
+                <!--<artifactId>proguard-maven-plugin</artifactId>-->
+
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--&lt;!&ndash; 混淆时刻，这里是打包的时候混淆&ndash;&gt;-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--&lt;!&ndash; 指定使用插件的混淆功能 &ndash;&gt;-->
+                            <!--<goal>proguard</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--<proguardVersion>6.2.2</proguardVersion>-->
+                    <!--&lt;!&ndash; 是否将生成的PG文件安装部署&ndash;&gt;-->
+                    <!--<attach>true</attach>-->
+                    <!--&lt;!&ndash; 是否混淆&ndash;&gt;-->
+                    <!--<obfuscate>true</obfuscate>-->
+                    <!--&lt;!&ndash; 指定生成文件分类 &ndash;&gt;-->
+                    <!--<attachArtifactClassifier>pg</attachArtifactClassifier>-->
+                    <!--<proguardInclude>${basedir}/proguard.conf</proguardInclude>-->
+                    <!--<libs>-->
+                        <!--<lib>${java.home}/lib/rt.jar</lib>-->
+                        <!--<lib>${java.home}/lib/jce.jar</lib>-->
+                        <!--<lib>${java.home}/lib/jsse.jar</lib>-->
+                    <!--</libs>-->
+                    <!--&lt;!&ndash; 对什么东西进行加载，这里仅有classes成功，不可能对配置文件及JSP混淆吧&ndash;&gt;-->
+                    <!--<injar>${project.build.finalName}.jar</injar>-->
+                    <!--<outjar>${project.build.finalName}-pg.jar</outjar>-->
+                    <!--&lt;!&ndash; 输出目录&ndash;&gt;-->
+                    <!--<outputDirectory>${project.build.directory}</outputDirectory>-->
+                <!--</configuration>-->
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>net.sf.proguard</groupId>-->
+                        <!--<artifactId>proguard-base</artifactId>-->
+                        <!--<version>6.2.2</version>-->
+                        <!--<scope>system</scope>-->
+                        <!--<systemPath>${basedir}/lib/proguard.jar</systemPath>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
+            <!--</plugin>-->
+
+        </plugins>
+    </build>
+
+</project>
