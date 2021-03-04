@@ -79,4 +79,24 @@ public class RechargeController {
         return (JSON) JSON.toJSON(responseModel);
     }
 
+    /**
+     *  自定义测试接口 - show
+     * @param params
+     * @return
+     */
+    @RequestMapping(value = "/show", method = RequestMethod.POST)
+    public JSON show(@RequestBody String params) {
+
+        JSONArray dataArray = new JSONArray();
+        JSONObject info1 = new JSONObject();
+        info1.put("", "");
+        info1.put("", "");
+        info1.put("", "");
+
+        ResponseModel responseModel = new ResponseModel();
+        responseModel.setRet(0);
+        responseModel.setData(dataArray);
+        return (JSON) JSON.toJSON(responseModel);
+    }
+
 }
