@@ -32,6 +32,13 @@
 
     <dependencies>
 
+        <!--commons-long-->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+
         <!-- 添加 XJar 依赖 -->
         <dependency>
             <groupId>com.github.core-lib</groupId>
