@@ -38,7 +38,6 @@ public class TomcatConfig {
             connector.setPort(Integer.valueOf(port));
             result.add(connector);
         }
-
         return result.toArray(new Connector[] {});
     }
 }
