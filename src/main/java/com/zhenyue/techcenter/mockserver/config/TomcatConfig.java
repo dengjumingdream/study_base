@@ -16,6 +16,9 @@ public class TomcatConfig {
     @Value("${server.addtionalPorts}")
     private String additionalPorts;
 
+    @Value("${server.saveLogName}")
+    private String saveLogName;
+
     @Bean
     public TomcatServletWebServerFactory getApplicationContext() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
@@ -36,6 +39,9 @@ public class TomcatConfig {
             Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
             connector.setScheme("http");
             connector.setPort(Integer.valueOf(port));
+            if(port.equals("8082")) {
+                connector.setProxyName(saveLogName);
+            }
             result.add(connector);
         }
         return result.toArray(new Connector[] {});
